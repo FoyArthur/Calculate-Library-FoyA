@@ -33,6 +33,6 @@ public class Calculate {
 	}
 	
 	public static int toImproperFrac(int number, int number2, int number3) {
-		
+		return;
 	}
 }
