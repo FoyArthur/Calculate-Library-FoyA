@@ -100,7 +100,27 @@ public class Calculate {
 		}
 	}
 	
+	public static double exponent(double number,int number2) {
+		double result = number;
+		for(i = 1; i < number2; i++){
+			result = result * number;
+		}
+		return result;
+	}
 	
+	public static int factorial(int number){
+		int result = 1;
+		for(i = number; i > 0; i--){
+			result = result * i;
+		}
+		return result;
+	}
 	
-	
+	public static boolean isPrime(int number){
+		if(Calculate.isDivisibleBy(number, 2) == false || number == 2){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -19,6 +19,10 @@ public class DoMath {
 		System.out.println(Calculate.isDivisibleBy(10, 5));
 		System.out.println(Calculate.absValue(-7));
 		System.out.println(Calculate.max(3, 5));
+		System.out.println(Calculate.round2(5.35));
+		System.out.println(Calculate.exponent(2,3));
+		System.out.println(Calculate.factorial(4));
+		System.out.println(Calculate.isPrime(13));
 	}
 
 }
