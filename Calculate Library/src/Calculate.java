@@ -93,14 +93,20 @@ public class Calculate {
 	}
 	// THE ROUND2 problem doesn't work for negative number
 	public static double round2(double number){
-		if(number % 1000 >= .005){
-			double rounded = (number + 0.01) * 100;
-			int roundedNum = (int) rounded;
-			double finalNum = roundedNum/100.0;
+		double rounded = number * 100;
+		if(rounded % 1 >= 0.5){
+			int roundedNum = (int) rounded + 1;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+		} else if(rounded % 1 <= -0.5){
+			int roundedNum = (int) rounded - 1;
+			double finalNum = (double) roundedNum/100.0;
 			return finalNum;
 		} else {
-			double rounded = 
-			return number - 0.01;
+			int roundedNum = (int) rounded;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+			
 		}
 	}
 	
