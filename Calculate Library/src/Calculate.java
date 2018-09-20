@@ -110,8 +110,20 @@ public class Calculate {
 	//rounds a double correctly to 2 decimal places
 	public static double round2(double number){
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if(number % 100 >= .05 || number % 100 <= -.05){
 			return number + 1;
+=======
+		double rounded = number * 100;
+		if(rounded % 1 >= 0.5){
+			int roundedNum = (int) rounded + 1;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+		} else if(rounded % 1 <= -0.5){
+			int roundedNum = (int) rounded - 1;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+>>>>>>> 0f5e03e2ed58624a49720a5729adc32fe4f9a2b7
 =======
 		double rounded = number * 100;
 		if(rounded % 1 >= 0.5){
