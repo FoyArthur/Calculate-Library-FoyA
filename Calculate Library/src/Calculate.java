@@ -109,10 +109,25 @@ public class Calculate {
 	
 	//rounds a double correctly to 2 decimal places
 	public static double round2(double number){
+<<<<<<< HEAD
 		if(number % 100 >= .05 || number % 100 <= -.05){
 			return number + 1;
+=======
+		double rounded = number * 100;
+		if(rounded % 1 >= 0.5){
+			int roundedNum = (int) rounded + 1;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+		} else if(rounded % 1 <= -0.5){
+			int roundedNum = (int) rounded - 1;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+>>>>>>> 0f5e03e2ed58624a49720a5729adc32fe4f9a2b7
 		} else {
-			return number - 1;
+			int roundedNum = (int) rounded;
+			double finalNum = (double) roundedNum/100.0;
+			return finalNum;
+			
 		}
 	}
 	// END OF PART 2	
@@ -121,7 +136,7 @@ public class Calculate {
 	
 	public static double exponent(double number,int number2) {
 		double result = number;
-		for(i = 1; i < number2; i++){
+		for(int i = 1; i < number2; i++){
 			result = result * number;
 		}
 		return result;
@@ -129,7 +144,7 @@ public class Calculate {
 	
 	public static int factorial(int number){
 		int result = 1;
-		for(i = number; i > 0; i--){
+		for(int i = number; i > 0; i--){
 			result = result * i;
 		}
 		return result;
@@ -142,4 +157,5 @@ public class Calculate {
 			return false;
 		}
 	}
+	
 }
