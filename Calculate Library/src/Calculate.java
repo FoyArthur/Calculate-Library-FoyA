@@ -146,25 +146,4 @@ public class Calculate {
 		return result;
 	}
 	
-	//determines whether integer is prime or not.
-	public static boolean isPrime(int number){
-		double factor = 2;
-		while(isDivisibleBy(number, factor) != true){
-			factor++;
-		}
-		if(factor < number){
-			return true;
-		} else{
-			return false;
-		}
-	}
-	
-	//returns greatest common factor of two integers
-	public static int gcf(int num1, int num2){
-		double factor = max(num1, num2);
-		while(isDivisibleBy(num1, factor) != true && isDivisibleBy(num2, factor)){
-			factor--;
-		}
-		return factor;
-	}
 }
