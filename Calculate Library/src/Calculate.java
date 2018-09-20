@@ -128,7 +128,7 @@ public class Calculate {
 	// END OF PART 2	
 	
 	
-	
+	//raises a double to a positive integer power
 	public static double exponent(double number,int number2) {
 		double result = number;
 		for(int i = 1; i < number2; i++){
@@ -137,6 +137,7 @@ public class Calculate {
 		return result;
 	}
 	
+	//returns factorial of integer passed
 	public static int factorial(int number){
 		int result = 1;
 		for(int i = number; i > 0; i--){
@@ -145,12 +146,25 @@ public class Calculate {
 		return result;
 	}
 	
+	//determines whether integer is prime or not.
 	public static boolean isPrime(int number){
-		if(Calculate.isDivisibleBy(number, 2) == false || number == 2){
+		double factor = 2;
+		while(isDivisibleBy(number, factor) != true){
+			factor++;
+		}
+		if(factor < number){
 			return true;
-		} else {
+		} else{
 			return false;
 		}
 	}
 	
+	//returns greatest common factor of two integers
+	public static int gcf(int num1, int num2){
+		double factor = max(num1, num2);
+		while(isDivisibleBy(num1, factor) != true && isDivisibleBy(num2, factor)){
+			factor--;
+		}
+		return factor;
+	}
 }
