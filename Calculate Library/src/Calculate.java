@@ -146,4 +146,29 @@ public class Calculate {
 		return result;
 	}
 	
+	//determines whether integer is prime or not.
+		public static boolean isPrime(int number){
+			int factor = 2;
+			while(Calculate.isDivisibleBy(number, factor) != true){
+				factor++;
+			}
+			if(factor < number){
+				return false;
+			} else{
+				return true;
+			}
+		}
+		
+		//returns greatest common factor of two integers
+		public static int gcf(int num1, int num2){
+			while(num2 != 0) {
+				int result = num1;
+				num1 = num2;
+				num2 = result % num2;
+			}
+				double resultt = (double) num1;
+				double resulttt = Calculate.absValue(resultt);
+				return resultt;
+		}
+			
 }
