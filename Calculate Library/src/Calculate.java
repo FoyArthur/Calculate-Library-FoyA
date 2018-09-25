@@ -161,18 +161,21 @@ public class Calculate {
 		
 		//returns greatest common factor of two integers
 		public static int gcf(int num1, int num2){
-			int factor = num1;
-			while(Calculate.isDivisibleBy(num1, factor) != true && isDivisibleBy(num2, factor)){
-				factor--;
+			int factor = 2;
+			for(int i = 2; i <= num1; i++) {
+				if(Calculate.isDivisibleBy(num1, i) == true && Calculate.isDivisibleBy(num2, i) == true){
+					factor = i;
+				}
 			}
 			return factor;
 		}
+	
 		
 		//returns an approximation of the square root of a double
 		public static double sqrt(double radicand){
 			double factor = radicand;
 			while(Calculate.absValue(radicand - Calculate.square(factor)) >= 0.005){
-				factor = (1/2 * (radical/factor + factor));
+				factor = (1/2 * (radicand/factor + factor));
 			}
 			return Calculate.round2(factor);
 		}
