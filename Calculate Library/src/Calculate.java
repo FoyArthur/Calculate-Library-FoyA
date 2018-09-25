@@ -25,13 +25,13 @@ public class Calculate {
 	}
 	
 	// Converts angle measure given in radians into degrees.
-	public static double toDegrees(double radians) {
-		return (radians/3.14159 * 180);
+	public static double toDegrees(double numRadians) {
+		return (numRadians/3.14159 * 180);
 	}
 	
 	//Converts angle measure given in degrees into radians.
-	public static double toRadians(double degrees){
-		return degrees/180 * 3.14159;
+	public static double toRadians(double numDegrees){
+		return numDegrees/180 * 3.14159;
 	}
 	
 	//returns value of discriminant based off the coeeficients of a quadratic equation
@@ -40,24 +40,24 @@ public class Calculate {
 	}
 	
 	//converts mixed number into improper fraction
-	public static String toImproperFrac(int num1, int num2, int num3) {
-		int numerator = num1 * num3 + num2;
-		return numerator + "/" + num3;
+	public static String toImproperFrac(int wholeNum, int numerator, int denominator) {
+		int newNumerator =  wholeNum * denominator + numerator;
+		return newNumerator + "/" + denominator;
 	}
 
 	//converts improper fraction into mixed number	
-	public static String toMixedNum(int num1, int num2) {
-		int wholeNum = num1 / num2;
-		int remainder = num1 - wholeNum * num2;
-		return wholeNum + " " + remainder + "/" + num2;
+	public static String toMixedNum(int numerator, int denominator) {
+		int wholeNum = numerator / denominator;
+		int newNumerator = numerator - wholeNum * denominator;
+		return wholeNum + "_" + newNumerator + "/" + denominator;
 	}
 	
 	//converts binomial multiplication into a quadratic equation
-	public static String foil(int num1, int num2, int num3, int num4, String var) {
-		int firstFoil = num1 * num3;
-		int secondFoil = num3 - num1;
-		int thirdFoil = num2 * num4;
-		return firstFoil + var + "^2 + " + secondFoil + var + " + " + thirdFoil;
+	public static String foil(int a, int b, int c, int d, String varLetter) {
+		int firstFoil = a * c;
+		int secondFoil = a * d + b * c;
+		int thirdFoil = b * d;
+		return firstFoil + varLetter + "^2 + " + secondFoil + varLetter + " + " + thirdFoil;
 	}
 	
 	//determines whether or not one integer is divisible by another.
@@ -168,11 +168,12 @@ public class Calculate {
 			return factor;
 		}
 		
-		public static double sqrt(double num){
-			double factor = num;
-			while(0.5 * (num/factor + factor) * (0.5 *(num/factor + factor)) >= num + 0.005 && 0.5 * (num/factor + factor) * (0.5 *(num/factor + factor)) <= num - 0.005){
-				factor= factor - 0.5;
+		//returns an approximation of the square root of a double
+		public static double sqrt(double radicand){
+			double factor = radicand;
+			while(Calculate.absValue(radicand - Calculate.square(factor)) >= 0.005){
+				factor = (1/2 * (radical/factor + factor));
 			}
-			return factor;
+			return Calculate.round2(factor);
 		}
 }
