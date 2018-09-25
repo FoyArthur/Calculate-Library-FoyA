@@ -174,7 +174,7 @@ public class Calculate {
 		//returns an approximation of the square root of a double
 		public static double sqrt(double radicand){
 			double factor = radicand;
-			while(Calculate.absValue(radicand - Calculate.square(factor)) >= 0.005){
+			while(Calculate.absValue(radicand - factor * factor >= 0.005){
 				factor = (1/2 * (radicand/factor + factor));
 			}
 			return Calculate.round2(factor);
