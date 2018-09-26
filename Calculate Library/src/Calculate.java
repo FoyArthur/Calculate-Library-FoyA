@@ -62,6 +62,7 @@ public class Calculate {
 	
 	//determines whether or not one integer is divisible by another.
 	public static boolean isDivisibleBy(int num1, int num2) {
+		if(num2 == 0) throw new IllegalArgumentException ("The second number cannot be negative");
 		if(num1 % num2 == 0 || num2 % num1 == 0) {
 			return true;
 		} else {
@@ -129,16 +130,22 @@ public class Calculate {
 	
 	
 	//raises a double to a positive integer power
-	public static double exponent(double number,int number2) {
-		double result = number;
-		for(int i = 1; i < number2; i++){
-			result = result * number;
+	public static double exponent(double base,int numExponent) {
+		if(numExponent < 0) throw new IllegalArgumentException ("The exponent can't be negative");
+		double result = base;
+		for(int i = 1; i < numExponent; i++){
+			result = result * base;
 		}
-		return result;
+		if(numExponent == 0) {
+			return 1;
+		}else {
+			return result;
+		}
 	}
 	
 	//returns factorial of integer passed
 	public static int factorial(int number){
+		if(number < 0) throw new IllegalArgumentException("The number can't be negative.");
 		int result = 1;
 		for(int i = number; i > 0; i--){
 			result = result * i;
@@ -152,7 +159,9 @@ public class Calculate {
 			while(Calculate.isDivisibleBy(number, factor) != true){
 				factor++;
 			}
-			if(factor < number){
+			if(number == 1) {
+				return false;
+			}else if(factor < number){
 				return false;
 			} else{
 				return true;
@@ -161,22 +170,29 @@ public class Calculate {
 		
 		//returns greatest common factor of two integers
 		public static int gcf(int num1, int num2){
-			int factor = 2;
+			int gcFactor = 2;
 			for(int i = 2; i <= num1; i++) {
 				if(Calculate.isDivisibleBy(num1, i) == true && Calculate.isDivisibleBy(num2, i) == true){
-					factor = i;
+					gcFactor = i;
 				}
 			}
-			return factor;
+			return gcFactor;
 		}
 	
 		
 		//returns an approximation of the square root of a double
 		public static double sqrt(double radicand){
-			double factor = radicand;
-			while(Calculate.absValue(radicand - factor * factor >= 0.005){
-				factor = (1/2 * (radicand/factor + factor));
+			if(radicand < 0) throw new IllegalArgumentException ("The radicand cannot be negative.");
+			double squareRoot = radicand;
+			while(Calculate.absValue(radicand - (squareRoot * squareRoot)) >= 0.005){
+				squareRoot = (0.5 * (radicand/squareRoot + squareRoot));
 			}
-			return Calculate.round2(factor);
+			return Calculate.round2(squareRoot);
+		}
+		
+		public static String quadForm(int num1, int num2, int num3) {
+			if(Calculate.discriminant(num1,num2,num3) < 0) {
+				return ("no real roots");
+			}
 		}
 }
