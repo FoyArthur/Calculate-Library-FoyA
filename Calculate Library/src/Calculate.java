@@ -36,7 +36,7 @@ public class Calculate {
 	
 	//returns value of discriminant based off the coeeficients of a quadratic equation
 	public static double discriminant(double numberA, double numberB, double numberC) {
-		return numberB * numberB - 4 * numberA * numberC;
+		return (numberB * numberB) - (4 * numberA * numberC);
 	}
 	
 	//converts mixed number into improper fraction
@@ -183,16 +183,25 @@ public class Calculate {
 		//returns an approximation of the square root of a double
 		public static double sqrt(double radicand){
 			if(radicand < 0) throw new IllegalArgumentException ("The radicand cannot be negative.");
-			double squareRoot = radicand;
+				double squareRoot = radicand;
 			while(Calculate.absValue(radicand - (squareRoot * squareRoot)) >= 0.005){
 				squareRoot = (0.5 * (radicand/squareRoot + squareRoot));
 			}
 			return Calculate.round2(squareRoot);
 		}
 		
-		public static String quadForm(int num1, int num2, int num3) {
+		public static String quadForm (int num1, int num2, int num3) {
 			if(Calculate.discriminant(num1,num2,num3) < 0) {
-				return ("no real roots");
+				return("no real roots");
 			}
+			if(num1 == 0) throw new IllegalArgumentException ("The first number cannot be negative.");
+			if(Calculate.discriminant(num1, num2, num3) == 0) { 
+				return ((num2 * -1.0)/(2 * num1) + "");
+			} else {
+				double firstRealRoot = ((-num1 + Calculate.sqrt(Calculate.discriminant(num1, num2, num3))/ (2 * num1));
+				double secondRealRoot = ((-num2 - Calculate.sqrt(Calculate.discriminant(num1, num2, num3)))/(2 * num1));
+				return (firstRealRoot + " and " + secondRealRoot);
+			}
+
 		}
 }
