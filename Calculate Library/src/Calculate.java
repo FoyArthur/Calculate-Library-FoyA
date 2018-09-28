@@ -60,7 +60,7 @@ public class Calculate {
 		return firstFoil + varLetter + "^2 + " + secondFoil + varLetter + " + " + thirdFoil;
 	}
 	
-	//determines whether or not one integer is divisible by another.
+	//determines whether or not one integer is divisible by another. Throws exception if num2 is less than zero
 	public static boolean isDivisibleBy(int num1, int num2) {
 		if(num2 == 0) throw new IllegalArgumentException ("The second number cannot be negative");
 		if(num1 % num2 == 0 || num2 % num1 == 0) {
@@ -129,7 +129,7 @@ public class Calculate {
 	// END OF PART 2	
 	
 	
-	//raises a double to a positive integer power
+	//raises a double to a positive integer power. throws exception if numExponent is less than zero
 	public static double exponent(double base,int numExponent) {
 		if(numExponent < 0) throw new IllegalArgumentException ("The exponent can't be negative");
 		double result = base;
@@ -143,7 +143,7 @@ public class Calculate {
 		}
 	}
 	
-	//returns factorial of integer passed
+	//returns factorial of integer passed. Throws exception if number is less than zero.
 	public static int factorial(int number){
 		if(number < 0) throw new IllegalArgumentException("The number can't be negative.");
 		int result = 1;
@@ -180,7 +180,7 @@ public class Calculate {
 		}
 	
 		
-		//returns an approximation of the square root of a double
+		//returns an approximation of the square root of a double. Throws exception if radicand is less than zero.
 		public static double sqrt(double radicand){
 			if(radicand < 0) throw new IllegalArgumentException ("The radicand cannot be negative.");
 				double squareRoot = radicand;
@@ -190,18 +190,31 @@ public class Calculate {
 			return Calculate.round2(squareRoot);
 		}
 		
+		//returns the real roots, if there any, of a quadratic equation. If there are no real roots says that there are no real roots.
+		//throws exception if num1 is zero
 		public static String quadForm (int num1, int num2, int num3) {
-			if(Calculate.discriminant(num1,num2,num3) < 0) {
+			double numDiscriminant = Calculate.discriminant(num1, num2, num3);
+			
+			//no roots
+			if(numDiscriminant < 0) {
 				return("no real roots");
 			}
+		
+			//if num1 is zero, code will not work
 			if(num1 == 0) throw new IllegalArgumentException ("The first number cannot be negative.");
-			if(Calculate.discriminant(num1, num2, num3) == 0) { 
+			
+			//only one root
+			if(numDiscriminant == 0) { 
 				return ((num2 * -1.0)/(2 * num1) + "");
 			} else {
-				double firstRealRoot = ((-num1 + Calculate.sqrt(Calculate.discriminant(num1, num2, num3))/ (2 * num1));
-				double secondRealRoot = ((-num2 - Calculate.sqrt(Calculate.discriminant(num1, num2, num3)))/(2 * num1));
-				return (firstRealRoot + " and " + secondRealRoot);
+				//two roots
+				double firstRealRoot = ((-num2 + Calculate.sqrt(numDiscriminant))/ (2 * num1));
+				double secondRealRoot = ((-num2 - Calculate.sqrt(numDiscriminant))/(2 * num1));
+				if(Calculate.max(firstRealRoot, secondRealRoot) == firstRealRoot) {
+					return (Calculate.round2(secondRealRoot) + " and " + Calculate.round2(firstRealRoot));
+				} else {
+					return (Calculate.round2(firstRealRoot) + " and " + Calculate.round2(secondRealRoot));
+				}
 			}
-
 		}
 }
