@@ -7,16 +7,16 @@ public class Quadratic {
 	public static String quadrDescriber (double a, double b, double c) {
 		String directionOpens;
 		if(a > 0) {
-			directionOpens = "up";
+			directionOpens = "Up";
 		} else {
-			directionOpens = "down";
+			directionOpens = "Down";
 		}
 		String intercepts;
 		intercepts = quadForm(a,b,c);
 		double x = round2(-b / (2 * a));
 		double y = round2(a * x * x + b * x + c);
 		String vertex = x + "and " + y;
-		return ("Opens:" + directionOpens + "\nVertex: " + x + ", " +  y + "\nIntercepts: " + intercepts);
+		return ("Opens: " + directionOpens + "\nAxis of Symmetry: " + x + " \nVertex: (" + x + ", " +  y + ")\nx-intercept(s): " + intercepts + "\ny-intercept: " + c + "\n");
 				
 	}
 	
