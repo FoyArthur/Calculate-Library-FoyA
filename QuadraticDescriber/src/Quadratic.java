@@ -98,39 +98,4 @@ public class Quadratic {
 				}
 			}
 			
-			public static void backSlash{
-				System.out.print("\\");
-				
-			}
-			
-			public static void forwardSlash{
-				System.out.print("/");
-			}
-			public static void topHalf{
-				for(int i = 8; i >= 2; i-=2){
-					for(int j = 8; j > i; j--){
-						System.out.print(" ");
-					}
-					System.out.print("\\"");
-					for(int x = 1 ; x != i; x++){
-						System.out.print(":");
-					}
-					System.out.println("/");
-				
-				}
-			}
-			
-			public static void bottomHalf{
-				for(int i = 2; i <= 8; i+=2){
-					for(int j = 2; i > j; j++){
-						System.out.print(" ");
-					}
-					System.out.print("\"");
-					for(int x = 1 ; x != i; x++){
-						System.out.print(":");
-					}
-					System.out.println("\\");
-				
-			}
-
 }
